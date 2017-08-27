@@ -10,8 +10,8 @@ class Greeter {
     console.log(this.message);
   }
 
-  fortuneGreeting() {
-    const fortuneMessage = this.fetch('http://fortunecookieapi.herokuapp.com/v1/cookie')
+  async fortuneGreeting() {
+    const fortuneMessage = await this.fetch('http://fortunecookieapi.herokuapp.com/v1/cookie')
       .then(res => res.json())
       .then(res => res[0].fortune.message);
     console.log(`Here is your timely fortune:  ${fortuneMessage}`);
