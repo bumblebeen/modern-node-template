@@ -1,4 +1,15 @@
 
-function wew(a, b) {
-  return a* c;
+class Greeter {
+	constructor (message) {
+		this.message = message;
+	}
+
+	greet() {
+		console.log(this.message);
+	}
 }
+
+let helloWorld = new Greeter('Hello World');
+helloWorld.greet();
+
+export default Greeter;
