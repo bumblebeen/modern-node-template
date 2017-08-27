@@ -8,6 +8,7 @@
     "start": "nodemon ./scripts/index.js --exec babel-node"
   },
   "dependencies": {
+    "node-fetch": "^1.7.2",
     "sequelize": "^4.7.5"
   },
   "devDependencies": {
