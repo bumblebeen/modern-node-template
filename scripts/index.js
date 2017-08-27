@@ -1,25 +1,24 @@
 import fetch from 'node-fetch';
 
 class Greeter {
-	constructor (message) {
-		this.message = message;
-	}
+  constructor(message) {
+    this.message = message;
+    this.fetch = fetch;
+  }
 
-	greet() {
-		console.log(this.message);
-	}
+  greet() {
+    console.log(this.message);
+  }
 
-	async fortuneGreeting() {
-		let fortuneMessage = await fetch('http://fortunecookieapi.herokuapp.com/v1/cookie')
-	      .then(res => res.json())
-	      .then(res => {
-	        return res[0].fortune.message;
-	      });
-	    console.log('Here is your timely fortune: ' + fortuneMessage);
-	}
+  fortuneGreeting() {
+    const fortuneMessage = this.fetch('http://fortunecookieapi.herokuapp.com/v1/cookie')
+      .then(res => res.json())
+      .then(res => res[0].fortune.message);
+    console.log(`Here is your timely fortune:  ${fortuneMessage}`);
+  }
 }
 
-let helloWorld = new Greeter('Hello World');
+const helloWorld = new Greeter('Hello World');
 helloWorld.fortuneGreeting();
 
 export default Greeter;
