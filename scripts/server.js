@@ -1,4 +1,4 @@
-import { tasks, subtasks } from './controllers';
+import { user, tasks, subtasks } from './controllers';
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -32,6 +32,8 @@ app.post('/todo', async (req, res) => {
   });
   res.json(todo);
 });
+
+app.get('/wew', user.list);
 
 app.put('/todo/:id', (req, res) => {
   models.Todo.find({ where: { id: req.params.id } }).then((todo) => {
