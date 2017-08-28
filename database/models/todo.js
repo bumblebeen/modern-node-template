@@ -4,13 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     complete: DataTypes.BOOLEAN,
     UserId: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: (models) => {
-        // associations can be defined here
-        Todo.belongsTo(models.User);
-      }
-    }
   });
+
+  Todo.associate = (models) => {
+    Todo.belongsTo(models.User);
+  };
   return Todo;
 };

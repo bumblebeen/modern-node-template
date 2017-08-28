@@ -5,16 +5,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     }
-  }, {
-    classMethods: {
-      associate: (models) => {
-        // associations can be defined here
-        Task.hasMany(models.TodoItem, {
-          foreignKey: 'taskId',
-          as: 'subTasks',
-        });
-      }
-    }
   });
+
+  Task.associate = (models) => {
+    Task.hasMany(models.SubTask, {
+      foreignKey: 'taskId',
+      as: 'subTasks',
+    });
+  };
   return Task;
 };

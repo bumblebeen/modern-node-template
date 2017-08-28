@@ -22,7 +22,17 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      taskId: {
+        type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Tasks',
+          key: 'id',
+          as: 'taskId',
+        },
+      },
     });
   },
   down: function(queryInterface, Sequelize) {

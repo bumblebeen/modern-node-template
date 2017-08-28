@@ -1,4 +1,4 @@
-import { tasks } from './controllers';
+import { tasks, subtasks } from './controllers';
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -51,6 +51,10 @@ app.delete('/todo/:id', async (req, res) => {
   res.json(todo);
 });
 
+app.get('/api/tasks', tasks.list);
 app.post('/api/task', tasks.create);
+app.get('/api/tasks/:taskId', tasks.retrieve);
+app.post('/api/tasks/:taskId/subtask', subtasks.create);
+
 
 module.exports = app;

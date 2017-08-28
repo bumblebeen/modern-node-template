@@ -10,17 +10,15 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false,
       allowNull: false
     },
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-        SubTask.belongsTo(models.Task, {
-          foreignKey: 'todoId',
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE',
-        });
-      }
-    }
   });
+
+  SubTask.associate = (models) => {
+    SubTask.belongsTo(models.Task, {
+      foreignKey: 'taskId',
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+    });
+  };
+
   return SubTask;
 };
