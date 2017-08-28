@@ -21,4 +21,10 @@ class Greeter {
 const helloWorld = new Greeter('Hello World');
 helloWorld.fortuneGreeting();
 
+const app = require('./server');
+
+app.listen(8080, () => {
+  console.log('Server at 8080');
+});
+
 export default Greeter;

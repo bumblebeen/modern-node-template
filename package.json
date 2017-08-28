@@ -8,6 +8,9 @@
     "start": "nodemon ./scripts/index.js --exec babel-node"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mysql2": "^1.4.2",
     "node-fetch": "^1.7.2",
     "sequelize": "^4.7.5"
   },
