@@ -1,3 +1,5 @@
+import { tasks } from './controllers';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const models = require('../database/models');
@@ -48,5 +50,7 @@ app.delete('/todo/:id', async (req, res) => {
   const todo = await models.Todo.destroy({ where: { id: req.params.id } });
   res.json(todo);
 });
+
+app.post('/api/task', tasks.create);
 
 module.exports = app;
