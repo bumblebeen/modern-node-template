@@ -10,6 +10,8 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false,
       allowNull: false
     },
+  }, {
+    timestamps: false
   });
 
   SubTask.associate = (models) => {

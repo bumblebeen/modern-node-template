@@ -4,6 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     complete: DataTypes.BOOLEAN,
     UserId: DataTypes.INTEGER
+  }, {
+    timestamps: false
   });
 
   Todo.associate = (models) => {

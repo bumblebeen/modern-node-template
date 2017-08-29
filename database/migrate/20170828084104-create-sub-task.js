@@ -15,14 +15,6 @@ module.exports = {
       complete: {
         type: Sequelize.BOOLEAN
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       taskId: {
         type: Sequelize.INTEGER,
         onUpdate: 'CASCADE',

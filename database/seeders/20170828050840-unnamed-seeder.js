@@ -14,15 +14,15 @@ module.exports = {
     */
     return queryInterface.bulkInsert('Todos', [{
       title: 'Buy some milk',
-      complete: 'false',
+      complete: false,
       UserId: 1
     }, {
       title: 'Walk the dog',
-      complete: 'true',
+      complete: true,
       UserId: 1
     }, {
       title: 'Study Math101',
-      complete: 'false',
+      complete: false,
       UserId: 2
     }], {});
   },
