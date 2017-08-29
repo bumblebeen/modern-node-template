@@ -25,6 +25,11 @@ app.get('/todos', async (req, res) => {
   res.json(todos);
 });
 
+app.get('/todoss', async (req, res) => {
+  const todos = await models.Todo.findAndCountAll({});
+  res.json(todos);
+});
+
 app.post('/todo', async (req, res) => {
   const todo = await models.Todo.create({
     title: req.body.title,
