@@ -1,4 +1,4 @@
-import { user, tasks, subtasks } from './controllers';
+import { user, tasks, subtasks, todo } from './controllers';
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -16,9 +16,11 @@ app.get('/', (req, res) => res.status(200).send({
 }));
 
 app.get('/todo/:id', async (req, res) => {
-  const todo = await models.Todo.find({ where: { id: req.params.id } });
-  res.json(todo);
+  const item = await models.Todo.find({ where: { id: req.params.id } });
+  res.json(item);
 });
+
+app.get('/sss', todo.list);
 
 app.get('/todos', async (req, res) => {
   const todos = await models.Todo.findAll({});
@@ -31,11 +33,11 @@ app.get('/todoss', async (req, res) => {
 });
 
 app.post('/todo', async (req, res) => {
-  const todo = await models.Todo.create({
+  const item = await models.Todo.create({
     title: req.body.title,
     UserId: req.body.user_id,
   });
-  res.json(todo);
+  res.json(item);
 });
 
 app.get('/wew', user.list);
@@ -54,11 +56,12 @@ app.put('/todo/:id', (req, res) => {
 });
 
 app.delete('/todo/:id', async (req, res) => {
-  const todo = await models.Todo.destroy({ where: { id: req.params.id } });
-  res.json(todo);
+  const item = await models.Todo.destroy({ where: { id: req.params.id } });
+  res.json(item);
 });
 
 app.get('/api/tasks', tasks.list);
+app.get('/api/taskc', tasks.count);
 app.post('/api/task', tasks.create);
 app.get('/api/tasks/:taskId', tasks.retrieve);
 app.post('/api/tasks/:taskId/subtask', subtasks.create);

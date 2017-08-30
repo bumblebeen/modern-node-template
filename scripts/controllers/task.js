@@ -7,11 +7,20 @@ module.exports = {
     }).then(task => res.status(201).send(task))
       .catch(error => res.status(400).send(error));
   },
+  count(req, res) {
+    return Task.count()
+      .then(count => res.status(201).send({ count }))
+      .catch(error => res.status(400).send(error));
+  },
   list(req, res) {
     return Task.findAll({
+      attributes: ['title'],
       include: [{
         model: SubTask,
         as: 'subTasks',
+        where: {
+          content: { $like: '%utatio%' },
+        },
       }],
     }).then(task => res.status(201).send(task))
       .catch(error => {
