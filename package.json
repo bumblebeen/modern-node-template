@@ -8,8 +8,12 @@
     "start": "nodemon ./scripts/index.js --exec babel-node"
   },
   "dependencies": {
+    "apollo-server-express": "^1.1.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "graphql": "^0.11.3",
+    "graphql-tools": "^1.2.2",
+    "lodash": "^4.17.4",
     "mysql2": "^1.4.2",
     "node-fetch": "^1.7.2",
     "sequelize": "^4.7.5"
