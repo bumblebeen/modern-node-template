@@ -5,6 +5,7 @@ module.exports = {
     return User.findAll({
       include: [Todo],
     }).then((users) => {
+      console.log(users);
       res.json(users);
     });
   },

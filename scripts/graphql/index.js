@@ -3,23 +3,24 @@ import _ from 'lodash';
 import { makeExecutableSchema } from 'graphql-tools';
 
 import Link from './link';
-import { Query as resolvers, typeDef as QueryType } from './query';
+
+import QueryType from './query';
+import resolvers from './rootResolver';
 
 const schemas = {
   Link,
 };
 
-console.log(QueryType);
-
 const typeDefs = _.reduce(schemas, (currentTypeDef, { typeDef }) => {
-  console.log(typeDef);
   currentTypeDef.push(typeDef);
   return currentTypeDef;
 }, []);
 
 typeDefs.push(QueryType);
 
-export default makeExecutableSchema({
+const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
 });
+
+export default schema;

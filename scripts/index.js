@@ -2,7 +2,7 @@
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 
 import Greeter from './controllers/greeter';
-import schema from './schemas';
+import schema from './graphql';
 
 const helloWorld = new Greeter('Hello World');
 helloWorld.fortuneGreeting();
@@ -14,7 +14,7 @@ app.use('/graphiql', graphiqlExpress({
   endpointURL: '/graphql',
 }));
 
-app.listen(8080, () => {
+app.listen(8081, () => {
   console.log('Server at 8080');
 });
 
