@@ -2,13 +2,15 @@
 import _ from 'lodash';
 import { makeExecutableSchema } from 'graphql-tools';
 
-import Link from './link';
+import { Link, UserType, TodoType } from './types';
 
 import QueryType from './query';
 import resolvers from './rootResolver';
 
 const schemas = {
   Link,
+  UserType,
+  TodoType,
 };
 
 const typeDefs = _.reduce(schemas, (currentTypeDef, { typeDef }) => {
