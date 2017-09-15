@@ -1,10 +1,7 @@
-import { User, Todo } from './../../../database/models';
+import { Todo } from './../../../database/models';
 
 const resolver = {
-  user: ({ UserId }) => {
-    console.log();
-    return User.findById(UserId);
-  },
+  user: (root) => root.getUser(),
 };
 
 const createTodo = ({ UserId, title }) => Todo.create({ UserId, title });

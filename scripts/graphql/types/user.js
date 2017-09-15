@@ -1,14 +1,7 @@
-import { User, Todo } from './../../../database/models';
+import { User } from './../../../database/models';
 
 const resolver = {
-  todos: ({ id: UserId }) => {
-    const query = {
-      where: {
-        UserId,
-      },
-    };
-    return Todo.findAll(query);
-  },
+  todos: (root) => root.getTodos(),
 };
 
 const allUsers = (_, args) => {
