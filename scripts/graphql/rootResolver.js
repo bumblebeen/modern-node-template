@@ -3,16 +3,14 @@ import { Link, UserType, TodoType } from './types';
 const resolvers = {
   Query: {
     allLinks: (...args) => Link.allLinks(...args),
-    allUsers: (_, args) => UserType.allUsers(args),
+    allUsers: UserType.allUsers,
   },
   Mutation: {
-    createUser: (root, args) => {
-      console.log(root);
-      console.log(args);
-      return UserType.createUser(args);
-    },
+    createUser: (root, args) => UserType.createUser(args),
     createTodo: (root, args) => TodoType.createTodo(args),
   },
+  User: UserType.resolver,
+  Todo: TodoType.resolver,
 };
 
 export default resolvers;

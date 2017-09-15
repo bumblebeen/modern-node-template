@@ -1,26 +1,34 @@
-import { User } from './../../../database/models';
+import { User, Todo } from './../../../database/models';
 
-class UserType {
-  constructor(email) {
-    this.email = email;
-  }
-}
+const resolver = {
+  todos: ({ id: UserId }) => {
+    const query = {
+      where: {
+        UserId,
+      },
+    };
+    return Todo.findAll(query);
+  },
+};
 
-UserType.allUsers = (args) => {
+const allUsers = (_, args) => {
   const query = (args) ? { where: args } : undefined;
   return User.findAll(query);
 };
 
-UserType.createUser = ({ email }) => {
-  console.log('Creating user for: ', email);
-  return User.create({ email });
-};
+const createUser = ({ email }) => User.create({ email });
 
-UserType.typeDef = `
+const typeDef = `
   type User {
     id: ID!
     email: String!
+    todos: [Todo]
   }
 `;
 
-export default UserType;
+export default {
+  resolver,
+  allUsers,
+  typeDef,
+  createUser,
+};
